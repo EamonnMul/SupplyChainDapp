@@ -1,6 +1,6 @@
 # Supply Chain Decentralized Application 
 
-
+This decentralized application is designed to manage and audit blockchain product ownership as the product is transferred down the supply chain. Smart contracts are used to support transferring of ownership, product auditing, and supply chain management using the example of a coffee supply chain. 
 
 
 ## Rinkeby Test Network Address
@@ -41,10 +41,33 @@ Consumer: accounts[4]  0x0d1d4e623D10F9FBA5Db95830F7d3839406C6AF2
 
 
   ## UML Diagrams 
+  
+  ### Activity Diagram
+  
+  
+  ![](images/ActivityDiagram.svg)
+  
+  ### Class Diagram
+  
+  
+  ![](images/ClassDiagram.svg)
+  
+  
+  ### Sequence Diagram
+  
+    
+  ![](images/sequenceDiagram.svg)
+      
+   ### State Diagram
+   
+    
+  ![](images/stateDiagram.svg)
 
 
 
   ## Additional Libraries Used
+  
+  Truffle-assertions - This package adds additional assertions that can be used to test Ethereum smart contracts inside Truffle tests. In this project it was used in the context of checking events. More info can be found here: https://kalis.me/check-events-solidity-smart-contract-test-truffle/
 
 
 
