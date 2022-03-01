@@ -42,16 +42,16 @@ Consumer: accounts[4]  0x0d1d4e623D10F9FBA5Db95830F7d3839406C6AF2
 
   ## UML Diagrams 
   
-  ![](images/ActivityDiagram.svg)
+  ![Activity Diagram](images/ActivityDiagram.svg)
   
   
-  ![](images/ClassDiagram.svg.svg)
+  ![Class Diagram](images/ClassDiagram.svg)
     
     
-  ![](images/sequenceDiagram.svg.svg)
+  ![Sequence Diagram](images/sequenceDiagram.svg)
       
       
-  ![](images/stateDiagram.svg.svg)
+  ![State Diagram](images/stateDiagram.svg)
 
 
 
