@@ -7,7 +7,7 @@ import "../coffeeaccesscontrol/FarmerRole.sol";
 import "../coffeeaccesscontrol/RetailerRole.sol";
 
 // Define a contract 'Supplychain'
-contract SupplyChain {
+contract SupplyChain is Ownable, ConsumerRole, RetailerRole, DistributorRole, FarmerRole {
 
   // Define 'owner'
   address owner;
@@ -70,7 +70,7 @@ contract SupplyChain {
   event Purchased(uint upc);
 
   // Define a modifer that checks to see if msg.sender == owner of the contract
-  modifier onlyOwner() {
+  modifier  onlyOwner() override {
     require(msg.sender == owner);
     _;
   }
@@ -163,7 +163,9 @@ contract SupplyChain {
   }
 
   // Define a function 'harvestItem' that allows a farmer to mark an item 'Harvested'
-  function harvestItem(uint _upc, address _originFarmerID, string memory _originFarmName, string memory _originFarmInformation, string memory _originFarmLatitude, string memory _originFarmLongitude, string   memory _productNotes) public 
+  function  harvestItem(uint _upc, address _originFarmerID, string memory _originFarmName, string memory _originFarmInformation, string memory _originFarmLatitude, string memory _originFarmLongitude, string   memory _productNotes) public 
+  //only Farmers can call this function
+  onlyFarmer()
   {
     // Add the new item as part of Harvest
      items[_upc] = Item(
@@ -251,6 +253,8 @@ contract SupplyChain {
     paidEnough(msg.value)
     // Call modifer to send any excess ether back to buyer
     checkValue(_upc)
+    // only Distrubtor can call this function
+    onlyDistributor()
     {
     
     // Update the appropriate fields - ownerID, distributorID, itemState
@@ -288,7 +292,7 @@ contract SupplyChain {
     // Call modifier to check if upc has passed previous supply chain stage
     shipped(_upc)
     // Access Control List enforced by calling Smart Contract / DApp
-    //onlyRetailer()
+    onlyRetailer()
     {
     // Update the appropriate fields - ownerID, retailerID, itemState
     items[_upc].ownerID = msg.sender;
@@ -306,7 +310,7 @@ contract SupplyChain {
     received(_upc)
     
     // Access Control List enforced by calling Smart Contract / DApp
-    //onlyConsumer()
+    onlyConsumer()
   
     {
     // Update the appropriate fields - ownerID, consumerID, itemState
